@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="ShoppingCart.EditModalPage">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+          PositionIn="Center"
+          PositionOut="Center"
+          ScaleIn="1.2"
+          ScaleOut="0.8"
+          DurationIn="400"
+          DurationOut="300"
+          EasingIn="SinOut"
+          EasingOut="SinIn"
+          HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="20, 20, 20, 20">
+        <StackLayout BackgroundColor="White" Padding="20,20,15,15">
+            <Label Text="Edit" FontSize="20" FontAttributes="Bold" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label x:Name="lblMessage" Text="" FontSize="16" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Entry x:Name="txtNewName" Placeholder="Entry new name" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Completed="OnOkTap" />
+            <StackLayout Spacing="30" Margin="0,5,20,5" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal" BackgroundColor="Transparent">
+                <Label Text="CANCEL" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource AccentColor}" FontSize="14" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnCancelTap" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="OK" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" TextColor="{StaticResource AccentColor}" FontSize="14" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnOkTap" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</pages:PopupPage>

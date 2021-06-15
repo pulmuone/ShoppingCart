@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShoppingCart"
+             x:Class="ShoppingCart.MainPage"
+             Title="All Lists"
+             NavigationPage.TitleIcon="logoCognexIcon">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListView x:Name="lstAllLists" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="listBulletIcon" VerticalOptions="CenterAndExpand" Margin="10" />
+                                <Label Grid.Column="1" Text="{Binding DisplayName}" FontSize="16" TextColor="Black" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" />
+                                <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand" Padding="10">
+                                    <Image Source="editIcon" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Edit_Tapped" CommandParameter="{Binding ID}" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3" VerticalOptions="CenterAndExpand" Padding="10">
+                                    <Image Source="deleteIcon" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Delete_Tapped" CommandParameter="{Binding ID}" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="listItem_Tapped" CommandParameter="{Binding ID}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Entry Grid.Row="1" x:Name="txtNewList" FontSize="18" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start" Placeholder="Add new list" Completed="txtNewList_Completed" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
